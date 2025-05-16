@@ -36,4 +36,4 @@ This is a basic calculator web application created for practice purposes. It inc
 
 ---
 
-_Designed by Justin Mora._ 💚👨🏻‍💻
+_Designed & coded by Justin Mora for practice._ 💚👨🏻‍💻

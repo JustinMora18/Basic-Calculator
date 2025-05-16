@@ -1,7 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Doto:wght@100..900&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }  
+
+.lightMode section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(assets/Backgrounds/BGgad-LM.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#calculator{
+    background-color: #c4c4c4a5;
+    padding: 60px;
+    max-width: 600px;
+    border-radius: 50px;
+    filter: blur(1.5);
+}
+
+#display{
+    background-color: #EFF5FF;
+    color: #1E1E1E;
+    font-family: "DotGothic16", sans-serif;
+    border: none;
+    border-radius: 30px;
+    text-align: right;
+    font-size: 5rem;
+    outline: none;
+    width: 100%;
+    height: 130px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+}
+
+#buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+#buttons button{
+    background-color: #EFF5FF;
+    color: #1E1E1E;
+    font-size: 36px;
+    text-align: center;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 30px;
+    border: none;
+    font-family: "DotGothic16", sans-serif;
+}
+
+#buttons button:hover{
+    opacity: 75%;
+}
+
+#buttons button:active{
+    opacity: 90%;
+}
