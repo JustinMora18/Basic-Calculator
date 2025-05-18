@@ -10,6 +10,13 @@ let A = 0;
 let operator = null;
 let B = null;
 
+function clearAll(){
+    A = 0;
+    B = null;
+    operator = null;
+
+}
+
 for (let i = 0; i < buttonValues.length; i++){
     let value = buttonValues[i];
     let button = document.createElement("button");
@@ -27,20 +34,63 @@ for (let i = 0; i < buttonValues.length; i++){
         if (rightSymbols.includes(value)){
             button.style.backgroundColor = "#6860FF";
             button.style.borderBottom = "solid 8px #433EAC";
-            button.style.color = "#EFF5FF"
+            button.style.color = "#EFF5FF";
         } else if (topSymbol.includes(value)){
             button.style.backgroundColor = "#5E5C86";
             button.style.borderBottom = "solid 8px #4A4773";
-            button.style.color = "#EFF5FF"
+            button.style.color = "#EFF5FF";
         }
     
         //button clicks
         button.addEventListener("click", function() {
             if (rightSymbols.includes(value)){
-    
+                if (value == "="){
+                    if (A != null){
+                        B = display.value;
+                        let numA = Number(A);
+                        let numB = Number(B);
+
+                        if (operator == "÷"){
+                            display.value = numA/numB;
+                        }
+                        else if (operator == "x"){
+                            display.value = numA*numB;
+                        }
+                        else if (operator == "-"){
+                            display.value = numA-numB;
+                        }
+                        else if (operator == "+"){
+                            display.value = numA+numB;
+                        }
+                        clearAll();
+                    }
+                }
+                else {
+                    operator = value;
+                    A = display.value;
+                    display.value = "";
+                }
             }
             else if (topSymbol.includes(value)){
-
+                if (value === "AC"){
+                    clearAll();
+                    display.value = "";
+                }
+                else if (value === "+/-"){
+                    if (display.value !== "" && display.value !== "0"){
+                        //remove the -
+                        if (display.value[0] === "-"){
+                            display.value = display.value.slice(1);
+                        }
+                        else {
+                            display.value = "-" + display.value;
+                        }
+                    }
+                    
+                }
+                else if (value === "%"){
+                    display.value = Number(display.value)/100;
+                }
             } 
             else { //num or . 
                 if (value === "."){

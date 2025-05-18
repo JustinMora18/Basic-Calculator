@@ -26,6 +26,7 @@
     box-shadow: -6px -6px 20px 3px #00000023;
     z-index: 4;
     transition: transform 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
+    border-bottom: solid 25px #00000023;
 }
 
 #calculator:hover{
