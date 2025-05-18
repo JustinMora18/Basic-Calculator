@@ -30,7 +30,6 @@ for (let i = 0; i < buttonValues.length; i++){
         if (nums.includes(value)){
             button.style.borderBottom = "solid 8px #8F939B";
         }
-        
         if (rightSymbols.includes(value)){
             button.style.backgroundColor = "#6860FF";
             button.style.borderBottom = "solid 8px #433EAC";
@@ -41,8 +40,9 @@ for (let i = 0; i < buttonValues.length; i++){
             button.style.color = "#EFF5FF";
         }
     
-        //button clicks
+        // button clicks
         button.addEventListener("click", function() {
+            if (display.value === "Error" && value !== "AC") return;
             if (rightSymbols.includes(value)){
                 if (value == "="){
                     if (A != null){
@@ -51,8 +51,14 @@ for (let i = 0; i < buttonValues.length; i++){
                         let numB = Number(B);
 
                         if (operator == "÷"){
-                            display.value = numA/numB;
-                        }
+                            if (numB === 0){
+                                display.value = "Error";
+                                clearAll();
+                            } else {
+                                display.value = numA/numB;
+                                clearAll();
+                            }
+                        }                        
                         else if (operator == "x"){
                             display.value = numA*numB;
                         }
