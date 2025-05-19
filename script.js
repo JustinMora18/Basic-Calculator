@@ -4,6 +4,8 @@ const topSymbol = ["AC", "+/-", "%"];
 const nums = ["7","8","9","4","5","6","1","2","3","0","."];
 
 const display = document.getElementById("display");
+const toggle = document.getElementById("tgglBttn");
+const buttonContainer = document.querySelector(".button-container");
 
 // A+B, A-B, A*B, A/B
 let A = 0;
@@ -16,28 +18,45 @@ function clearAll(){
     operator = null;
 }
 
+function applyButtonStyles() {
+    const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
+    const buttons = document.querySelectorAll("#buttons button");
+
+    buttons.forEach(button => {
+        const value = button.innerText;
+
+        // Reset any previous styles
+        button.style = "";
+
+        if (value == "0") {
+            button.style.width = "14.66rem";
+            button.style.gridColumn = "span 2";
+        }
+
+        if (nums.includes(value)) {
+            button.style.backgroundColor = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            button.style.borderBottom = isDarkMode ? "solid 8px #000000" : "solid 8px #8F939B";
+            button.style.color = isDarkMode ? "#EEF6FF" : "#1E1E1E"
+        }
+
+        if (rightSymbols.includes(value)) {
+            button.style.backgroundColor = isDarkMode ? "#54BC4C" : "#6860FF";
+            button.style.borderBottom = isDarkMode ? "solid 8px #35832F" : "solid 8px #433EAC";
+            button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+        }
+        
+        else if (topSymbol.includes(value)) {
+            button.style.backgroundColor = isDarkMode ? "#6D8767" : "#5E5C86";
+            button.style.borderBottom = isDarkMode ? "solid 8px #4D5B4A" : "solid 8px #4A4773";
+            button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+        }
+    });
+}
+
 for (let i = 0; i < buttonValues.length; i++){
     let value = buttonValues[i];
     let button = document.createElement("button");
     button.innerText = value;
-    
-    // styling the buttons 
-        if (value == "0"){
-        button.style.width = "14.66rem";
-        button.style.gridColumn = "span 2";
-        }
-        if (nums.includes(value)){
-            button.style.borderBottom = "solid 8px #8F939B";
-        }
-        if (rightSymbols.includes(value)){
-            button.style.backgroundColor = "#6860FF";
-            button.style.borderBottom = "solid 8px #433EAC";
-            button.style.color = "#EFF5FF";
-        } else if (topSymbol.includes(value)){
-            button.style.backgroundColor = "#5E5C86";
-            button.style.borderBottom = "solid 8px #4A4773";
-            button.style.color = "#EFF5FF";
-        }
     
         // button clicks
         button.addEventListener("click", function() {
@@ -116,13 +135,32 @@ for (let i = 0; i < buttonValues.length; i++){
     document.getElementById("buttons").appendChild(button);
 }
 
- // toggle button
-const toggle = document.getElementById("tgglBttn");
-const buttonContainer = document.querySelector(".button-container");
+applyButtonStyles();
 
+// Keeps the dark mode color when it's active and the page is refreshed
+window.addEventListener("DOMContentLoaded", () => {
+    const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
+    toggle.checked = isDarkMode;
+    
+    const firstSection = document.querySelector("section.lightMode-frstSect");
+    if (firstSection) {
+        firstSection.classList.toggle("darkMode-frstSect", isDarkMode);
+    }
+
+    if (isDarkMode) {
+        buttonContainer.style.backgroundColor = "#c4c4c4a5";
+    } else {
+        buttonContainer.style.backgroundColor = "#292828b4";
+    }
+});
+
+ // toggle button
 toggle.addEventListener("change", () => {
     // keeps the color
-    document.body.classList.toggle("dark-darkMode-frstSect", toggle.checked);
+    const firstSection = document.querySelector("section.lightMode-frstSect");
+    if (firstSection) {
+        firstSection.classList.toggle("darkMode-frstSect", toggle.checked);
+    }
     localStorage.setItem("darkMode-frstSect", toggle.checked);
 
     // toggle button color change
@@ -132,17 +170,5 @@ toggle.addEventListener("change", () => {
     else {
         buttonContainer.style.backgroundColor = "#292828b4";
     }
+    applyButtonStyles();
 });
-
-// Keeps the dark mode color when it's active and the page is refreshed
-window.addEventListener("DOMContentLoaded", () => {
-    const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
-    toggle.checked = isDarkMode;
-    document.body.classList.toggle("dark-mode", isDarkMode);
-    if (isDarkMode) {
-        buttonContainer.style.backgroundColor = "#c4c4c4a5";
-    } else {
-        buttonContainer.style.backgroundColor = "#292828b4";
-    }
-});
-
