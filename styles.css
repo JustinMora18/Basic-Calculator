@@ -22,6 +22,7 @@ body{
     background-position: center;
     background-size: contain;
     position: relative;
+    background-color: #EFF5FF;
 }
 
 #calculator{
@@ -46,7 +47,7 @@ body{
     color: #1E1E1E;
     font-family: "DotGothic16", sans-serif;
     border: none;
-    border-bottom: solid 8px #8F939B ;
+    border-bottom: solid 8px #8F939B;
     border-radius: 30px;
     text-align: right;
     font-size: 4rem;
@@ -96,10 +97,59 @@ body{
     left: 0;
     margin: 4rem 3rem;
 }
+
 .lightMode-frstSect h4{
     position: absolute;
     bottom: 0;
     right: 0;
     margin: 4rem 3rem;
     text-align: right;
+}
+
+.button-container{
+    position: absolute;
+    display: flex;
+    background-color: #292828b4;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    height: 100px;
+    margin: 4rem 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.tgglBttn-npt{
+    display: none;
+}
+
+.tgglBttn-lbl{
+    position: relative;
+    background-color: #1E1E1E;
+    width: 150px;
+    height: 80px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tgglBttn-lbl::before{
+    position: absolute;
+    content: "";
+    background-color: #EFF5FF;
+    width: 60px;
+    height: 60px;
+    border-radius: 200px;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+.tgglBttn-npt:checked + .tgglBttn-lbl{
+    background-color: #EFF5FF;
+}
+
+.tgglBttn-npt:checked + .tgglBttn-lbl::before{
+    background-color: #1E1E1E;
+    transform: translateX(70px);
 }

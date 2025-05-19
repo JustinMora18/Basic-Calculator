@@ -14,7 +14,6 @@ function clearAll(){
     A = 0;
     B = null;
     operator = null;
-
 }
 
 for (let i = 0; i < buttonValues.length; i++){
@@ -116,3 +115,34 @@ for (let i = 0; i < buttonValues.length; i++){
     // add buttons to calculator 
     document.getElementById("buttons").appendChild(button);
 }
+
+ // toggle button
+const toggle = document.getElementById("tgglBttn");
+const buttonContainer = document.querySelector(".button-container");
+
+toggle.addEventListener("change", () => {
+    // keeps the color
+    document.body.classList.toggle("dark-darkMode-frstSect", toggle.checked);
+    localStorage.setItem("darkMode-frstSect", toggle.checked);
+
+    // toggle button color change
+    if (toggle.checked) {
+        buttonContainer.style.backgroundColor = "#c4c4c4a5";
+    } 
+    else {
+        buttonContainer.style.backgroundColor = "#292828b4";
+    }
+});
+
+// Keeps the dark mode color when it's active and the page is refreshed
+window.addEventListener("DOMContentLoaded", () => {
+    const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
+    toggle.checked = isDarkMode;
+    document.body.classList.toggle("dark-mode", isDarkMode);
+    if (isDarkMode) {
+        buttonContainer.style.backgroundColor = "#c4c4c4a5";
+    } else {
+        buttonContainer.style.backgroundColor = "#292828b4";
+    }
+});
+
