@@ -21,6 +21,7 @@ function clearAll(){
 function applyButtonStyles() {
     const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
     const buttons = document.querySelectorAll("#buttons button");
+    const isMobile = window.innerWidth < 480;
 
     buttons.forEach(button => {
         const value = button.innerText;
@@ -29,8 +30,13 @@ function applyButtonStyles() {
         button.style = "";
 
         if (value == "0") {
-            button.style.width = "14.66rem";
-            button.style.gridColumn = "span 2";
+            if (!isMobile) {
+                button.style.width = "100%";
+                button.style.gridColumn = "span 2";
+            } else {
+                button.style.width = "100%";
+                button.style.gridColumn = "span 2";
+            }
         }
 
         if (nums.includes(value)) {
@@ -137,6 +143,9 @@ for (let i = 0; i < buttonValues.length; i++){
 
 applyButtonStyles();
 
+// call applyButtonStyles also when windows size changes
+window.addEventListener("resize", applyButtonStyles);
+
 // Keeps the dark mode color when it's active and the page is refreshed
 window.addEventListener("DOMContentLoaded", () => {
     const isDarkMode = localStorage.getItem("darkMode-frstSect") === "true";
@@ -152,6 +161,8 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
         buttonContainer.style.backgroundColor = "#292828b4";
     }
+
+    applyButtonStyles();
 });
 
  // toggle button
@@ -172,3 +183,4 @@ toggle.addEventListener("change", () => {
     }
     applyButtonStyles();
 });
+

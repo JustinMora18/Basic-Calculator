@@ -8,33 +8,41 @@
 
 body{
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: clamp(1.2rem, 3vw, 2rem);
 }
 
 .lightMode-frstSect{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
     background-image: url(assets/Backgrounds/BGgad-LM.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     position: relative;
     background-color: #EFF5FF;
     color: #1E1E1E;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 #calculator{
     background-color: #c4c4c4a5;
-    padding: 60px;
-    max-width: 600px;
-    border-radius: 50px;
+    padding: clamp(20px, 5vw, 60px);
+    width: clamp(280px, 90vw, 600px);
+    min-width: 400px;
+    max-width: 100%;
+    border-radius: clamp(40px, 5vw, 50px);
     box-shadow: -6px -6px 20px 3px #00000023;
     z-index: 4;
     transition: transform 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
-    border-bottom: solid 25px #00000023;
+    border-bottom: solid clamp(10px, 2vw, 25px) #00000023;
+    box-sizing: border-box;
 }
 
 #calculator:hover{
@@ -46,32 +54,32 @@ body{
     background-color: #EFF5FF;
     color: #1E1E1E;
     font-family: "DotGothic16", sans-serif;
-    border: none;
-    border-bottom: solid 8px #8F939B;
-    border-radius: 30px;
+    font-size: clamp(3rem, 5vw, 4rem);
     text-align: right;
-    font-size: 4rem;
+    border: none;
+    border-bottom: solid clamp(4px, 1vw, 8px) #8F939B;
+    border-radius: clamp(35px, 3vw, 30px);
     outline: none;
     width: 100%;
-    height: 150px;
+    height: clamp(80px, 15vh, 150px);
     box-sizing: border-box;
     margin-bottom: 8px;
-    padding-right: 2.7rem;
-    padding-left: 2.7rem;
+    padding-right: clamp(1rem, 2vw, 2.7rem);
+    padding-left: clamp(1rem, 2vw, 2.7rem);
 }
 
 #buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: clamp(5px, 1vw, 8px);
 }
 
 #buttons button{
-    font-size: 36px;
+    font-size: clamp(1.5rem, 3vw, 36px);
     text-align: center;
-    width: 7rem;
-    height: 7rem;
-    border-radius: 30px;
+    width: clamp(75px, 15vw, 100%);
+    height: clamp(80px, 15vw, 5.95vw);
+    border-radius: clamp(25px, 3vw, 30px);
     border: none;
     font-family: "DotGothic16", sans-serif;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -93,14 +101,18 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    margin: 4rem 3rem;
+    font-size: clamp(0.5rem, 4vw, 2rem);
+    line-height: clamp(1rem, 2vw, 2rem);
+    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);
 }
 
 .lightMode-frstSect h4{
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 4rem 3rem;
+    font-size: clamp(0.5rem, 4vw, 2rem);
+    line-height: clamp(1rem, 2vw, 2rem);
+    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);    
     text-align: right;
 }
 
@@ -111,9 +123,9 @@ body{
     background-color: #292828b4;
     bottom: 0;
     left: 0;
-    width: 120px;
-    height: 60px;
-    margin: 4rem 3rem;
+    width: clamp(80px, 20vw, 120px);
+    height: clamp(40px, 10vw, 60px);
+    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);
     align-items: center;
     justify-content: center;
     border-radius: 50px;
@@ -126,8 +138,8 @@ body{
 .tgglBttn-lbl{
     position: relative;
     background-color: #1E1E1E;
-    width: 105px;
-    height: 45px;
+    width: clamp(70px, 18vw, 105px);
+    height: clamp(30px, 8vw, 45px);
     border-radius: 50px;
     cursor: pointer;
     transition: 0.2s;
@@ -137,10 +149,10 @@ body{
     position: absolute;
     content: "";
     background-color: #EFF5FF;
-    width: 25px;
-    height: 25px;
+    width: clamp(15px, 4vw, 25px);
+    height: clamp(15px, 4vw, 25px);
     border-radius: 200px;
-    margin: 10px;
+    margin: clamp(5px, 1.5vw, 10px);
     transition: 0.2s;
 }
 
@@ -150,7 +162,7 @@ body{
 
 .tgglBttn-npt:checked + .tgglBttn-lbl::before{
     background-color: #1E1E1E;
-    transform: translateX(60px);
+    transform: translateX(clamp(30px, 10vw, 60px));
 }
 
 /* dark mode style */
@@ -168,4 +180,84 @@ body{
     background-color: #1E1E1E;
     color: #EFF5FF;
     border-bottom: solid 8px #000000;
+}
+
+@media screen and (max-width: 768px) {
+    #calculator {
+        padding: 50px;
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #calculator {
+        padding: 55px;
+        border-radius: 30px;
+    }
+    
+    #display {
+        height: 90px;
+        font-size: 2.5rem;
+        border-radius: 20px;
+    }
+    
+    #buttons button {
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .lightMode-frstSect h1 {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        margin: 1rem;
+    }
+    
+    .lightMode-frstSect h4 {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin: 1rem;
+    }
+    
+    .button-container {
+        width: 80px;
+        height: 40px;
+        margin: 1rem;
+    }
+    
+    .tgglBttn-lbl {
+        width: 70px;
+        height: 30px;
+    }
+    
+    .tgglBttn-lbl::before {
+        width: 15px;
+        height: 15px;
+        margin: 7.5px;
+    }
+    
+    .tgglBttn-npt:checked + .tgglBttn-lbl::before {
+        transform: translateX(40px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #calculator {
+        padding: 15px;
+    }
+    
+    #display {
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    #buttons button {
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .lightMode-frstSect h1, .lightMode-frstSect h4 {
+        font-size: 0.9rem;
+    }
 }
