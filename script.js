@@ -40,22 +40,47 @@ function applyButtonStyles() {
         }
 
         if (nums.includes(value)) {
-            button.style.backgroundColor = isDarkMode ? "#1E1E1E" : "#EFF5FF";
-            button.style.borderBottom = isDarkMode ? "solid 8px #000000" : "solid 8px #8F939B";
-            button.style.color = isDarkMode ? "#EEF6FF" : "#1E1E1E"
+            if (!isMobile){
+                button.style.backgroundColor = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+                button.style.borderBottom = isDarkMode ? "solid 8px #000000" : "solid 8px #8F939B";
+                button.style.color = isDarkMode ? "#EEF6FF" : "#1E1E1E"
+            }
+            else {
+                button.style.backgroundColor = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+                button.style.borderBottom = isDarkMode ? "solid 6px #000000" : "solid 6px #8F939B";
+                button.style.color = isDarkMode ? "#EEF6FF" : "#1E1E1E"
+            }
+            button.setAttribute('data-border-color', isDarkMode ? "#000000" : "#8F939B");
         }
 
         if (rightSymbols.includes(value)) {
-            button.style.backgroundColor = isDarkMode ? "#54BC4C" : "#6860FF";
-            button.style.borderBottom = isDarkMode ? "solid 8px #35832F" : "solid 8px #433EAC";
-            button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            if (!isMobile){                
+                button.style.backgroundColor = isDarkMode ? "#54BC4C" : "#6860FF";
+                button.style.borderBottom = isDarkMode ? "solid 8px #35832F" : "solid 8px #433EAC";
+                button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            }
+            else{
+                button.style.backgroundColor = isDarkMode ? "#54BC4C" : "#6860FF";
+                button.style.borderBottom = isDarkMode ? "solid 6px #35832F" : "solid 6px #433EAC";
+                button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            }
+            button.setAttribute('data-border-color', isDarkMode ? "#35832F" : "#433EAC");
         }
         
         else if (topSymbol.includes(value)) {
-            button.style.backgroundColor = isDarkMode ? "#6D8767" : "#5E5C86";
-            button.style.borderBottom = isDarkMode ? "solid 8px #4D5B4A" : "solid 8px #4A4773";
-            button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            if(!isMobile){
+                button.style.backgroundColor = isDarkMode ? "#6D8767" : "#5E5C86";
+                button.style.borderBottom = isDarkMode ? "solid 8px #4D5B4A" : "solid 8px #4A4773";
+                button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            }
+            else{
+                button.style.backgroundColor = isDarkMode ? "#6D8767" : "#5E5C86";
+                button.style.borderBottom = isDarkMode ? "solid 6px #4D5B4A" : "solid 6px #4A4773";
+                button.style.color = isDarkMode ? "#1E1E1E" : "#EFF5FF";
+            }
+            button.setAttribute('data-border-color', isDarkMode ? "#4D5B4A" : "#4A4773");
         }
+
     });
 }
 
@@ -63,6 +88,27 @@ for (let i = 0; i < buttonValues.length; i++){
     let value = buttonValues[i];
     let button = document.createElement("button");
     button.innerText = value;
+
+        button.addEventListener("mousedown", function() {
+            button.style.borderBottom = "none";
+            button.style.transform = "translateY(2px)";
+        });
+        
+        button.addEventListener("mouseup", function() {
+            const borderColor = button.getAttribute('data-border-color');
+            if (borderColor) {
+                button.style.borderBottom = `solid 8px ${borderColor}`;
+            }
+            button.style.transform = "translateY(0)";
+        });
+        
+        button.addEventListener("mouseleave", function() {
+            const borderColor = button.getAttribute('data-border-color');
+            if (borderColor) {
+                button.style.borderBottom = `solid 8px ${borderColor}`;
+            }
+            button.style.transform = "translateY(0)";
+        });
     
         // button clicks
         button.addEventListener("click", function() {
@@ -183,4 +229,3 @@ toggle.addEventListener("change", () => {
     }
     applyButtonStyles();
 });
-

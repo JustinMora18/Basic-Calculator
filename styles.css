@@ -33,15 +33,15 @@ body{
 
 #calculator{
     background-color: #c4c4c4a5;
-    padding: clamp(20px, 5vw, 60px);
-    width: clamp(280px, 90vw, 600px);
+    padding: clamp(38px, 5vw, 60px);
+    width: clamp(400px, 90vw, 600px);
     min-width: 400px;
     max-width: 100%;
     border-radius: clamp(40px, 5vw, 50px);
     box-shadow: -6px -6px 20px 3px #00000023;
     z-index: 4;
     transition: transform 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
-    border-bottom: solid clamp(10px, 2vw, 25px) #00000023;
+    border-bottom: solid clamp(20px, 2vw, 25px) #00000023;
     box-sizing: border-box;
 }
 
@@ -54,30 +54,30 @@ body{
     background-color: #EFF5FF;
     color: #1E1E1E;
     font-family: "DotGothic16", sans-serif;
-    font-size: clamp(3rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     text-align: right;
     border: none;
-    border-bottom: solid clamp(4px, 1vw, 8px) #8F939B;
-    border-radius: clamp(35px, 3vw, 30px);
+    border-bottom: solid clamp(6px, 1vw, 8px) #8F939B;
+    border-radius: clamp(25px, 3vw, 30px);
     outline: none;
     width: 100%;
     height: clamp(80px, 15vh, 150px);
     box-sizing: border-box;
     margin-bottom: 8px;
-    padding-right: clamp(1rem, 2vw, 2.7rem);
-    padding-left: clamp(1rem, 2vw, 2.7rem);
+    padding-right: clamp(2rem, 2vw, 2.7rem);
+    padding-left: clamp(2rem, 2vw, 2.7rem);
 }
 
 #buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: clamp(5px, 1vw, 8px);
+    gap: clamp(4px, 1vw, 8px);
 }
 
 #buttons button{
     font-size: clamp(1.5rem, 3vw, 36px);
     text-align: center;
-    width: clamp(75px, 15vw, 100%);
+    width: clamp(80px, 190vw, 100%);
     height: clamp(80px, 15vw, 5.95vw);
     border-radius: clamp(25px, 3vw, 30px);
     border: none;
@@ -92,27 +92,26 @@ body{
 }
 
 #buttons button:active{
-    transform: translateY(4px);
+    transform: translateY(1px);
     box-shadow: 0 5px 10px #1f1f1f37;
     z-index: 5;
 }
 
-.lightMode-frstSect h1{
+.lightMode-frstSect h1, h4{
     position: absolute;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    line-height: clamp(1.2rem, 2vw, 2rem);
+    margin: clamp(2rem, 3vw, 4rem) clamp(2rem, 3vw, 3rem);
+}
+
+.lightMode-frstSect h1{
     top: 0;
     left: 0;
-    font-size: clamp(0.5rem, 4vw, 2rem);
-    line-height: clamp(1rem, 2vw, 2rem);
-    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);
 }
 
 .lightMode-frstSect h4{
-    position: absolute;
     bottom: 0;
     right: 0;
-    font-size: clamp(0.5rem, 4vw, 2rem);
-    line-height: clamp(1rem, 2vw, 2rem);
-    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);    
     text-align: right;
 }
 
@@ -125,7 +124,7 @@ body{
     left: 0;
     width: clamp(80px, 20vw, 120px);
     height: clamp(40px, 10vw, 60px);
-    margin: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);
+    margin: clamp(2rem, 3vw, 4rem) clamp(1rem, 3vw, 3rem);
     align-items: center;
     justify-content: center;
     border-radius: 50px;
@@ -152,8 +151,7 @@ body{
     width: clamp(15px, 4vw, 25px);
     height: clamp(15px, 4vw, 25px);
     border-radius: 200px;
-    margin: clamp(5px, 1.5vw, 10px);
-    transition: 0.2s;
+    margin: clamp(8.5px, 1.5vw, 10px) clamp(7.5px, 1.5vw, 10px);    transition: 0.2s;
 }
 
 .tgglBttn-npt:checked + .tgglBttn-lbl{
@@ -179,85 +177,60 @@ body{
 .darkMode-frstSect #display{
     background-color: #1E1E1E;
     color: #EFF5FF;
-    border-bottom: solid 8px #000000;
-}
-
-@media screen and (max-width: 768px) {
-    #calculator {
-        padding: 50px;
-        width: 80vw;
-    }
+    border-bottom: solid clamp(6px, 1vw, 8px) #000000;
 }
 
 @media screen and (max-width: 480px) {
     #calculator {
-        padding: 55px;
-        border-radius: 30px;
+        border-radius: 35px;
+        padding: 50px 30px;
     }
     
     #display {
-        height: 90px;
-        font-size: 2.5rem;
-        border-radius: 20px;
+        height: 100px;
+    }
+
+    #buttons{
+        row-gap: 4px;
+    }
+
+    #buttons button:hover{
+        filter: none;
     }
     
-    #buttons button {
-        width: 70px;
-        height: 70px;
-        border-radius: 15px;
-        font-size: 1.5rem;
+    #buttons button:active{
+        transform: none;
     }
-    
-    .lightMode-frstSect h1 {
-        font-size: 1.2rem;
-        line-height: 1.2rem;
-        margin: 1rem;
-    }
-    
-    .lightMode-frstSect h4 {
-        font-size: 1rem;
-        line-height: 1rem;
-        margin: 1rem;
-    }
-    
-    .button-container {
-        width: 80px;
-        height: 40px;
-        margin: 1rem;
-    }
-    
-    .tgglBttn-lbl {
-        width: 70px;
-        height: 30px;
-    }
-    
-    .tgglBttn-lbl::before {
-        width: 15px;
-        height: 15px;
-        margin: 7.5px;
-    }
-    
+
     .tgglBttn-npt:checked + .tgglBttn-lbl::before {
-        transform: translateX(40px);
+        transform: translateX(47px);
     }
 }
 
-@media screen and (max-width: 320px) {
-    #calculator {
-        padding: 15px;
-    }
+@media screen and (max-width: 375px) {
     
+    #calculator{
+        padding: 25px;
+        min-width: min-content;
+    }
+
     #display {
-        height: 60px;
+        height: 80px;
         font-size: 2rem;
     }
     
     #buttons button {
-        height: 45px;
+        width: 70px;
+        height:70px;
         font-size: 1.2rem;
+        border-radius: 20px;
     }
     
     .lightMode-frstSect h1, .lightMode-frstSect h4 {
         font-size: 0.9rem;
+        margin: 0.5rem;
+    }
+    .button-container{
+        margin: 0.5rem;
     }
 }
